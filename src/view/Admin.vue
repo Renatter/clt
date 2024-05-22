@@ -1,0 +1,84 @@
+<template>
+  <div class="container px-[20px]">
+    <router-link to="/addItem">
+      <button
+        type="button"
+        class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+      >
+        Қосу
+      </button>
+    </router-link>
+    <router-link to="/order">
+      <button
+        type="button"
+        class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900 ml-[10px]"
+      >
+        Тапсырыстар
+      </button>
+    </router-link>
+    <div class="flex flex-wrap gap-[50px]">
+      <div v-for="i in items">
+        <Card class="w-[150px]" :cardData="i"></Card>
+        <button
+          @click="deleteItem(i.title)"
+          type="button"
+          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-[100%] mt-[10px]"
+        >
+          Жоюу
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import {
+  doc,
+  deleteDoc,
+  updateDoc,
+  getDoc,
+  query,
+  where,
+  onSnapshot,
+  addDoc,
+  collection,
+  getDocs,
+} from "firebase/firestore";
+import { db, storage } from "../firebase/firebase";
+import Card from "../components/Card.vue";
+export default {
+  components: {
+    Card,
+  },
+  data() {
+    return {
+      items: [],
+    };
+  },
+  methods: {
+    async deleteItem(i) {
+      const querySnapshot = await getDocs(
+        query(collection(db, "items"), where("title", "==", i))
+      );
+
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+        window.location.reload();
+      });
+    },
+  },
+  async created() {
+    const querySnapshot = await getDocs(collection(db, "items"));
+    querySnapshot.forEach((doc) => {
+      this.items.push(doc.data());
+    });
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.conainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+</style>
