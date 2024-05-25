@@ -1,6 +1,6 @@
 <template>
   <div @click="openModal(cardData)">
-    <div class="border-[1px]">
+    <div>
       <img :src="cardData.img" alt="" />
       <div class="text-center">
         <div class="bg-[#DCD8D3]">
@@ -24,4 +24,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 570px) {
+  img {
+    width: 180px;
+    height: 270px;
+  }
+}
+img {
+  width: 280px;
+  height: 270px;
+}
+</style>

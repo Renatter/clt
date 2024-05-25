@@ -13,26 +13,47 @@
           <p class="text-[20px] text-[#F93C00]">{{ cardData.price }} ТГ</p>
           <div class="flex gap-[10px] items-center flex-wrap">
             <p>Өлшемі</p>
-            <p
-              v-for="size in cardData.Size"
-              :key="size"
-              @click="selectSize(size)"
-              class="p-[5px] ml-[5px] border-[1px] border-[black] cursor-pointer"
-              :class="{
-                'p-[5px] ml-[5px] border-[1px] border-[black] bg-[black] text-[white]':
-                  size === selectedSize,
-              }"
-            >
-              {{ size }}
-            </p>
+            <div v-if="Array.isArray(cardData.Size)" class="flex">
+              <p
+                v-for="size in cardData.Size"
+                :key="size"
+                @click="selectSize(size)"
+                class="p-[5px] ml-[5px] border-[1px] border-[black] cursor-pointer"
+                :class="{
+                  'p-[5px] ml-[5px] border-[1px] border-[black] bg-[black] text-[white]':
+                    size === selectedSize,
+                }"
+              >
+                {{ size }}
+              </p>
+            </div>
+
+            <!-- Если Size не является массивом -->
+            <div v-else>
+              <p
+                :key="cardData.Size"
+                @click="selectSize(cardData.Size)"
+                class="p-[5px] ml-[5px] border-[1px] border-[black] cursor-pointer"
+                :class="{
+                  'p-[5px] ml-[5px] border-[1px] border-[black] bg-[black] text-[white]':
+                    cardData.Size === selectedSize,
+                }"
+              >
+                {{ cardData.Size }}
+              </p>
+            </div>
           </div>
           <button
+            v-if="currentUser != null"
             @click="addToCart"
             type="button"
             class="w-[100%] mt-[30px] text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
           >
             Сатып алу
           </button>
+          <div v-else class="font-bold text-[20px] pt-[20px]">
+            Сайтқа тіркеліңіз
+          </div>
         </div>
       </div>
     </div>

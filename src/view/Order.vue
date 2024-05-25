@@ -109,14 +109,24 @@ export default {
       this.showModal = true;
     },
     async deleteItem(itemName) {
-      const querySnapshot = await getDocs(
-        query(collection(db, "basket"), where("name", "==", itemName))
-      );
+      try {
+        const querySnapshot = await getDocs(
+          query(collection(db, "basket"), where("name", "==", itemName))
+        );
 
-      querySnapshot.forEach(async (doc) => {
-        await deleteDoc(doc.ref);
-      });
-      location.reload();
+        const deletePromises = querySnapshot.docs.map(async (doc) => {
+          try {
+            await deleteDoc(doc.ref);
+          } catch (error) {
+            console.error(`Error deleting document ${doc.id}:`, error);
+          }
+        });
+
+        await Promise.all(deletePromises);
+        location.reload();
+      } catch (error) {
+        console.error("Error querying documents:", error);
+      }
     },
   },
   created() {

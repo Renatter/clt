@@ -66,9 +66,9 @@
     >
       Фильтр
     </button>
-    <div class="flex flex-wrap gap-[10px] justify-between px-[20px]">
+    <div class="flex flex-wrap gap-[10px] justify-between px-[10px]">
       <Card
-        class="w-[150px]"
+        class="w-[180px]"
         v-for="i in filteredItems"
         :cardData="i"
         @card-clicked="openModal"

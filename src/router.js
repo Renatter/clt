@@ -9,12 +9,25 @@ import Basket from './view/basket.vue'
 import Admin from './view/Admin.vue'
 import AddItem from './view/AddItem.vue'
 import Order from './view/Order.vue'
+import About from './view/About.vue'
+import Contacts from './view/Contacts.vue'
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
             path: '/',
             name: '/',
             component: HomePage,
+        },
+        {
+            path: '/contacts',
+            name: '/contacts',
+            component: Contacts,
+        },
+        {
+            path: '/about',
+            name: '/about',
+            component: About,
         },
         {
             path: '/catalogs',

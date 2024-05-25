@@ -201,7 +201,7 @@
       </div>
     </div>
   </div>
-  <div v-if="order === true" class="container">
+  <div v-if="order" class="container pt-[300px]">
     <div class="">
       <div class="t relative">
         <h1 class="text-[30px] font-bold text-center">
@@ -215,7 +215,6 @@
           Бас тарту
         </button>
       </div>
-      <div class="loader abs"></div>
     </div>
   </div>
 </template>
@@ -324,24 +323,33 @@ export default {
     window.removeEventListener("resize", this.checkScreenSize);
   },
   async created() {
-    // Проверка аутентификации пользователя
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        this.currentUser = user;
-        const docRef = doc(db, "basket", this.currentUser.uid);
-        const unsubscribe = onSnapshot(docRef, (docSnap) => {
-          if (docSnap.exists()) {
-            this.items = docSnap.data().cart;
-            this.order = docSnap.data().order;
-          } else {
-            console.log("No such document!");
-          }
-        });
+    try {
+      // Проверка аутентификации пользователя
+      auth.onAuthStateChanged(async (user) => {
+        if (user) {
+          this.currentUser = user;
+          const docRef = doc(db, "basket", this.currentUser.uid);
 
-        console.log(this.currentUser.uid);
-        this.unsubscribe = unsubscribe;
-      }
-    });
+          const unsubscribe = onSnapshot(docRef, (docSnap) => {
+            try {
+              if (docSnap.exists()) {
+                this.items = docSnap.data().cart;
+                this.order = docSnap.data().order;
+              } else {
+                console.log("No such document!");
+              }
+            } catch (error) {
+              console.error("Error processing document snapshot:", error);
+            }
+          });
+
+          this.unsubscribe = unsubscribe;
+        }
+      });
+    } catch (error) {
+      console.error("Error in created function:", error);
+    }
+    console.log(this.items);
   },
 };
 </script>

@@ -69,7 +69,7 @@
       @slideChange="onSlideChange"
     >
       <swiper-slide v-for="i in items">
-        <Card class="w-[300px]" :cardData="i" @card-clicked="openModal"></Card>
+        <Card class="w-[200px]" :cardData="i" @card-clicked="openModal"></Card>
       </swiper-slide>
     </swiper>
   </div>

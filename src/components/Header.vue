@@ -1,41 +1,6 @@
 <template>
   <div class="container">
     <div class="flex justify-between pt-[30px] items-center">
-      <form class="input">
-        <label
-          for="default-search"
-          class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-          >Search</label
-        >
-        <div class="relative">
-          <div
-            class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-          >
-            <svg
-              class="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search"
-            required
-          />
-        </div>
-      </form>
       <div class="burger-icon" @click="toggleMenu">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -242,11 +207,10 @@ export default {
       registerEmail: "",
       registerPassword: "",
       items: [
-        { title: "киім", router: "catalogs" },
-        { title: "аксессуарлар", router: "catalogs" },
+        { title: "Басты бет", router: "/" },
         { title: "Каталог", router: "catalogs" },
-        { title: "арнайы. ұсыныс", router: "catalogs" },
-        { title: "Sale%", router: "catalogs" },
+        { title: "Компания туралы", router: "about" },
+        { title: "Контакты", router: "contacts" },
       ],
       isMenuOpen: false,
       isLoginModalVisible: false,
@@ -267,7 +231,7 @@ export default {
         await setDoc(doc(db, "users", currentUser.uid), {
           email: this.registerEmail,
           password: this.registerPassword,
-          role: "admin",
+          role: "user",
         });
         this.isRegisterModalVisible = false;
         this.$router.push("/");
@@ -282,6 +246,7 @@ export default {
           this.loginEmail + "@mgial.com",
           this.loginPassword
         );
+        this.isLoginModalVisible = false;
       } catch (error) {
         console.log("Ошибка при входе пользователя:", error);
       }
@@ -368,7 +333,6 @@ export default {
   .container > .flex > form,
   .container > .flex > h1,
   .container > .flex > div {
-    padding-bottom: 20px;
   }
 }
 
