@@ -16,9 +16,9 @@
         Тапсырыстар
       </button>
     </router-link>
-    <div class="flex flex-wrap gap-[50px]">
+    <div class="flex flex-wrap gap-[20px] justify-between">
       <div v-for="i in items">
-        <Card class="w-[150px]" :cardData="i"></Card>
+        <Card class="w-[150px] h-" :cardData="i"></Card>
         <button
           @click="deleteItem(i.title)"
           type="button"
