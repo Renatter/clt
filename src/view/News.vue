@@ -12,7 +12,7 @@
               :src="i.img"
               width="300px"
               height=""
-              class="rounded-[20px] h-[200px]"
+              class="rounded-[20px] h-[200px] object-contain"
               alt=""
             />
             <p class="text-[#1F2937] font-bold h-[130px]">{{ i.title }}</p>

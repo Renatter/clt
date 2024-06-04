@@ -4,7 +4,7 @@
       <h1 class="text-[#1F2937] font-bold text-[30px] mb-[25px]">
         {{ item.title }}
       </h1>
-      <img :src="item.img" alt="" class="rounded-[20px]" width="850px" />
+      <img :src="item.img" alt="" class="rounded-[20px]" height="500px" />
       <p class="text-[22px] mt-[20px] text-[#9b9999]">{{ item.text }}</p>
     </div>
   </div>
