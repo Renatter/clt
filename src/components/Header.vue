@@ -76,16 +76,16 @@
             </button>
           </div>
         </div>
-        <div>
+        <div v-if="isChek">
           <a
             href="https://www.instagram.com/zhansaya_nurtaza?igsh=NXo3ZjUxbzhkb2Nv"
           >
             <i class="fa fa-instagram ml-[15px]" style="font-size: 36px"></i>
           </a>
+
           <a href="https://api.whatsapp.com/send?phone=87077302603">
-            <i class="fa fa-telegram ml-[15px]" style="font-size: 36px"></i>
+            <i class="fa fa-whatsapp ml-[15px]" style="font-size: 36px"></i>
           </a>
-          <i class="fa fa-whatsapp ml-[15px]" style="font-size: 36px"></i>
         </div>
       </div>
     </div>
@@ -103,6 +103,17 @@
           {{ i.title }}
         </router-link>
       </p>
+      <div v-if="!isChek" class="flex w-[100px]">
+        <a
+          href="https://www.instagram.com/zhansaya_nurtaza?igsh=NXo3ZjUxbzhkb2Nv"
+        >
+          <i class="fa fa-instagram ml-[15px]" style="font-size: 36px"></i>
+        </a>
+
+        <a href="https://api.whatsapp.com/send?phone=87077302603">
+          <i class="fa fa-whatsapp ml-[15px]" style="font-size: 36px"></i>
+        </a>
+      </div>
     </div>
 
     <div
@@ -230,6 +241,7 @@ export default {
       loginPassword: "",
       registerEmail: "",
       registerPassword: "",
+      isChek: true,
       items: [
         { title: "Басты бет", router: "/" },
         { title: "Каталог", router: "catalogs" },
@@ -244,7 +256,11 @@ export default {
       role: null,
     };
   },
+
   methods: {
+    checkScreenSize() {
+      this.isChek = window.innerWidth >= 570;
+    },
     async handleSignUp() {
       try {
         await createUserWithEmailAndPassword(
@@ -293,6 +309,13 @@ export default {
       // Handle registration logic here
       alert("Сәтті тіркелді");
     },
+  },
+  mounted() {
+    this.checkScreenSize();
+    window.addEventListener("resize", this.checkScreenSize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.checkScreenSize);
   },
   async created() {
     auth.onAuthStateChanged(async (user) => {
