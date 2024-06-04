@@ -1,6 +1,7 @@
 <template>
   <div class="container px-[20px]">
-    <p class="leading-[2]">
+    <h1 class="text-[30px] font-bold pb-[10px]">Біздің интернет магазин туралы жалпы ақпарат</h1>
+    <p class="leading-[2] pb-[10px]">
       Қазақстандық интернет-дүкен-қазақстандық трикотаждың жетекші
       өндірушілерінің өнімдері жиналған бірегей сауда алаңы. 10 жылдан астам
       уақыт бойы біз нарықтағы жағдайды мұқият қадағалап келеміз және сәнді
@@ -8,7 +9,7 @@
       қалдырмаймыз. Егер назар аударуға лайық жаңа қазақстандық бренд пайда
       болса, оның өнімдерін біздің каталогтан табасыз!
     </p>
-    <img width="100%" src="https://bellavka.kz/img/other/hist.jpg" alt="" />
+    <img width="100%" src="https://bellavka.kz/img/other/hist.jpg" alt=""  class="pb-[10px]"/>
     <p class="pt-[10px] leading-[2]">
       Барлығы қалай басталды? Өздеріңіз білетіндей, Орал-Қазақстандағы сән
       орталықтарының бірі және мыңдаған көтерме сатып алушылар әйелдер киімін
@@ -19,7 +20,8 @@
       болып табылмайды, оны іскер әйелдер мен ғылыми зиялы қауым, оқытушылар мен
       басшылар, кеңсе қызметкерлері мен шығармашылық тұлғалар, Қазақстандағы,
       Ресейдегі, Беларуссиядағы және басқа елдердегі сәнгер-студенттер таңдайды.
-      <br class="pt-[20px]" />
+      <br class="pt-[10px]" /> 
+      <br />
       Қазақстанда және одан тыс жерлерде миллиондаған әйелдер қазақстандық
       трикотаж сатып алуды армандайды, сондықтан оларға неге көмектеспеске? 2010
       жылы әйелдер киімінің интернет-дүкенін құру туралы шешім қабылданды,
@@ -33,7 +35,7 @@
       акцияларымыз бен сатылымдарымызды бақылай отырып, сіз әрқашан тартымды
       бағамен ерекше нәрсе таба аласыз.
     </p>
-    <h1 class="text-[30px] font-bold pt-[30px]">Сервистер</h1>
+    <h1 class="text-[20px] font-bold pt-[30px] pb-[10px]">Сервистер</h1>
     <p class="leading-[2]">
       "ROSI" интернет-дүкені сатып алуды оңай әрі ыңғайлы ету үшін бәрін
       жасайды! Әрбір клиент біздің назарымызды және шынайы қамқорлығымызды
@@ -49,11 +51,11 @@
       төлем опцияларын және жылдам жеткізуді ұсынамыз, осылайша сіз сатып
       алуларыңызды еш қиындықсыз тамашалай аласыз. <br />
     </p>
-    <P class="font-bold pt-[20px]"
+    <P class="text-[20px] font-bold pt-[20px]"
       >Міне, сатып алушылардың жаңа сатып алулар үшін Беллавкаға қайта-қайта
       оралуының алты негізгі себебі:</P
     >
-    <ul class="max-w space-y-1 list-disc list-inside text-[20px] pt-[20px]">
+    <ul class="max-w space-y-1 list-disc list-inside pt-[20px]">
       <li class="pt-[10px]">
         Қазақстаннан келген клиенттер үшін - курьерлік жеткізу 4000-нан астам
         елді мекенді қамтиды;
@@ -79,39 +81,36 @@
         бірегей мүмкіндігін береміз.
       </li>
     </ul>
-    <h1 class="text-[30px] font-bold pt-[30px]">САТУ МЕНЕДЖЕРЛЕРІ</h1>
+    <h1 class="text-[20px] font-bold pt-[30px] pb-[10px]">САТУ МЕНЕДЖЕРЛЕРІ</h1>
     <div class="flex gap-[10px] flex-wrap">
       <div class="bg-[#F3F3F6] p-[25px] max-w-[380px]">
-        <p class="name font-bold">Юлия</p>
+        <p class="name font-bold">Айгерим</p>
         <p class="prof text-[#bd9365] my-[20px] font-bold">Сату менеджері</p>
         <p class="phone">
-          <span class="font-bold">8 800 004 01 59</span>(Қазақстан үшін тегін)
+          <span class="font-bold">+7 702 950 73 04</span>(Қазақстан үшін тегін)
         </p>
         <p class="phone mt-[20px]">
-          <span class="font-bold">+375 (29) 800 27 59</span> (РБ және басқа
-          елдер)
+          <span class="font-bold">+7 702 950 73 06</span> (СНГ жәнеде басқа елді мекендер)
         </p>
       </div>
       <div class="bg-[#F3F3F6] p-[25px] max-w-[380px]">
-        <p class="name font-bold">Наталия</p>
+        <p class="name font-bold">Асем</p>
         <p class="prof text-[#bd9365] my-[20px] font-bold">Сату менеджері</p>
         <p class="phone">
-          <span class="font-bold">8 800 004 01 59</span>(Қазақстан үшін тегін)
+          <span class="font-bold">+7 702 950 73 05</span>(Қазақстан үшін тегін)
         </p>
         <p class="phone mt-[20px]">
-          <span class="font-bold">+375 (29) 800 27 59</span> (РБ және басқа
-          елдер)
+          <span class="font-bold">+7 702 950 73 06</span> (СНГ жәнеде басқа елді мекендер)
         </p>
       </div>
       <div class="bg-[#F3F3F6] p-[25px] max-w-[380px]">
-        <p class="name font-bold">Мария</p>
+        <p class="name font-bold">Ару</p>
         <p class="prof text-[#bd9365] my-[20px] font-bold">Сату менеджері</p>
         <p class="phone">
-          <span class="font-bold">8 800 004 01 59</span>(Қазақстан үшін тегін)
+          <span class="font-bold">+7 702 950 73 07</span>(Қазақстан үшін тегін)
         </p>
         <p class="phone mt-[20px]">
-          <span class="font-bold">+375 (29) 800 27 59</span> (РБ және басқа
-          елдер)
+          <span class="font-bold">+7 702 950 73 06</span> (СНГ елдері)
         </p>
       </div>
     </div>
@@ -133,7 +132,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.conainer {
+.container {
   max-width: 1200px;
   margin: 0 auto;
 }

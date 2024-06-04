@@ -1,14 +1,16 @@
 <template>
   <div class="b h-[100vh] relative">
     <div class="x">
-      <h1 class="text-[40px]">Көктемгі көңіл-күй</h1>
-      <p class="text-center">-20% жаңа коллекцияға</p>
-      <button
-        type="button"
-        class="text-[20px] py-[20px] px-[30px] mt-[20px] me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 rounded-[20px] w-[100%]"
-      >
-        Каталог
-      </button>
+      <h1 class="text-[44px] font-bold text-gray-100">Көктемгі көңіл-күй</h1>
+      <p class="text-[20px] text-center text-gray-100">-20% жаңа коллекцияға</p>
+      <router-link to="/catalogs">
+        <button
+          type="button"
+          class="text-[22px] py-[20px] px-[30px] mt-[20px] me-2 mb-2 text-sm font-medium text-gray-100 focus:outline-none bg-gray border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 rounded-[20px] w-[100%]"
+        >
+          Каталог
+        </button>
+      </router-link>
     </div>
   </div>
   <div
@@ -17,49 +19,53 @@
     <div class="relative max-w-[550px] h-[700px] border-[1px]">
       <img
         class="w-[100%] h-[100%] object-cover"
-        src="../assets/i2.webp"
+        src="../assets/cloth.png"
         alt=""
       />
       <div
         class="gl absolute bottom-[20px] mx-[0px] left-[70px] flex justify-between p-[20px] w-[70%]"
       >
-        <h1>
-          Послендний <br />
-          шанс купить
+        <h1 class="font-bold text-gray-100">
+          Жаңадан келген <br />
+          тауарлар
         </h1>
-        <button
-          type="button"
-          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        >
-          Каталог
-        </button>
+        <router-link to="/catalogs">
+          <button
+            type="button"
+            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          >
+            Каталог
+          </button>
+        </router-link>
       </div>
     </div>
     <div class="relative max-w-[550px] h-[700px] border-[1px]">
       <img
         class="w-[100%] h-[100%] object-cover"
-        src="../assets/i2.webp"
+        src="../assets/cloth2.png"
         alt=""
       />
       <div
         class="gl absolute bottom-[20px] mx-[0px] left-[70px] flex justify-between p-[20px] w-[70%]"
       >
-        <h1>
-          Послендний <br />
-          шанс купить
+        <h1 class="font-bold text-gray-100">
+          Сатып алуға <br />
+          соңғы шанс
         </h1>
-        <button
-          type="button"
-          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        >
-          Каталог
-        </button>
+        <router-link to="/catalogs">
+          <button
+            type="button"
+            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          >
+            Каталог
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
   <div v-if="isSwiperVisible" class="pb-[30px]">
     <h1 class="text-center text-[30px] font-bold py-[30px]">
-      Выбор покупателей
+      Біздің тұтыншулардың таңдауы
     </h1>
     <swiper
       :loop="true"
@@ -73,9 +79,9 @@
       </swiper-slide>
     </swiper>
   </div>
-  <div v-else class="flex flex-wrap gap-[20px] justify-evenly cursor-pointer">
+  <div v-else class="flex flex-wrap gap-[10px] justify-evenly cursor-pointer">
     <Card
-      class="w-[170px]"
+      class="w-[250px]"
       :cardData="i"
       @card-clicked="openModal"
       v-for="i in items"
@@ -87,15 +93,15 @@
     <div class="relative max-w-[550px] h-[700px] border-[1px]">
       <img
         class="w-[100%] h-[100%] object-cover"
-        src="../assets/item/SARAFAN.webp"
+        src="../assets/item/SARAFAN.png"
         alt=""
       />
       <div
         class="gl absolute bottom-[20px] mx-[0px] left-[70px] flex justify-between p-[20px] w-[70%]"
       >
-        <h1 class="font-bold">
-          Платья <br />
-          и сарафаны
+        <h1 class="font-bold text-gray-100">
+          Көйлектер <br />
+          және сарафанды киімдер
         </h1>
         <button
           type="button"
@@ -108,13 +114,13 @@
     <div class="relative max-w-[550px] h-[700px] border-[1px]">
       <img
         class="w-[100%] h-[100%] object-cover"
-        src="../assets/item/c.webp"
+        src="../assets/item/c.png"
         alt=""
       />
       <div
         class="gl absolute bottom-[20px] mx-[0px] left-[70px] flex items-center justify-between p-[20px] w-[70%]"
       >
-        <h1 class="font-bold">Косютм</h1>
+        <h1 class="font-bold text-gray-100">Стильді костюмдер</h1>
         <button
           type="button"
           class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
@@ -126,19 +132,29 @@
   </div>
 
   <div class="bg-[#F1EDE8] h-[190px]">
-    <div class="container flex justify-between pt-[50px] flex-wrap">
-      <div class="text">
-        <h1 class="font-bold text-[30px]">Скидка за 10%</h1>
-        <p class="text-[#636363] pt-[15px]">
-          Узнайте первыми о новинках и скидках
-        </p>
-      </div>
-      <div class="f">
-        <i class="fa fa-instagram" style="font-size: 48px; color: #c5aa9a"></i>
-        <i
-          class="fa fa-telegram ml-[30px]"
-          style="font-size: 48px; color: #c5aa9a"
-        ></i>
+    <div class="bg-[#232D51] text-white">
+      <div class="container">
+        <h1 class="text-[30px] font-serif pt-[30px]">Жаналыктар</h1>
+        <div class="flex gap-[15px] flex-wrap pb-[30px]">
+          <router-link
+            v-for="x in news"
+            :to="{ path: '/news/' + x.title }"
+            class="w-[350px]"
+          >
+            <div>
+              <img
+                :src="x.img"
+                alt=""
+                class="rounded-t-[15px] w-[500px] h-[300px] object-cover"
+              />
+              <h1
+                class="bg-white text-black p-[10px] font-bold rounded-b-[15px] h-[130px]"
+              >
+                {{ truncateTitle(x.title) }}
+              </h1>
+            </div>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -168,6 +184,7 @@ export default {
       modalVisible: false,
       selectedCardData: null,
       items: [],
+      news: [],
     };
   },
   components: {
@@ -193,6 +210,13 @@ export default {
     onSlideChange() {
       console.log("slide change");
     },
+    truncateTitle(title) {
+      const words = title.split(" ");
+      if (words.length > 15) {
+        return words.slice(0, 5).join(" ") + "...";
+      }
+      return title;
+    },
   },
   mounted() {
     this.checkScreenSize();
@@ -205,6 +229,10 @@ export default {
     const querySnapshot = await getDocs(collection(db, "items"));
     querySnapshot.forEach((doc) => {
       this.items.push(doc.data());
+    });
+    const news = await getDocs(collection(db, "news"));
+    news.forEach((doc) => {
+      this.news.push(doc.data());
     });
   },
 };

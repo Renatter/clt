@@ -20,58 +20,73 @@
       <router-link to="/">
         <h1 class="font-bold text-[30px]">ROSI</h1>
       </router-link>
-      <div v-if="role == null" class="flex">
-        <button
-          type="button"
-          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-          @click="showLoginModal"
-        >
-          Кiру
-        </button>
-        <button
-          type="button"
-          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-          @click="showRegisterModal"
-        >
-          Тiркелу
-        </button>
-      </div>
-      <div v-if="role == 'user'" class="flex">
-        <router-link to="/basket">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-[30px] ml-[15px]"
-            viewBox="0 0 448 512"
-          >
-            <path
-              d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"
-            />
-          </svg>
-        </router-link>
-        <button
-          @click="logout"
-          type="button"
-          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-[10px]"
-        >
-          Шығу
-        </button>
-      </div>
-      <div v-if="role === 'admin'">
-        <router-link to="/admin">
+      <div class="flex">
+        <div v-if="role == null" class="flex">
           <button
             type="button"
-            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-[10px]"
+            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            @click="showLoginModal"
           >
-            Админ
+            Кiру
           </button>
-        </router-link>
-        <button
-          @click="logout"
-          type="button"
-          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-[10px]"
-        >
-          Шығу
-        </button>
+          <button
+            type="button"
+            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            @click="showRegisterModal"
+          >
+            Тiркелу
+          </button>
+        </div>
+        <div class="flex justify-between">
+          <div v-if="role == 'user'" class="flex">
+            <router-link to="/basket">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-[30px] ml-[15px]"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"
+                />
+              </svg>
+            </router-link>
+            <button
+              @click="logout"
+              type="button"
+              class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-[10px]"
+            >
+              Шығу
+            </button>
+          </div>
+          <div v-if="role === 'admin'">
+            <router-link to="/admin">
+              <button
+                type="button"
+                class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-[10px]"
+              >
+                Админ
+              </button>
+            </router-link>
+            <button
+              @click="logout"
+              type="button"
+              class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-[10px]"
+            >
+              Шығу
+            </button>
+          </div>
+        </div>
+        <div>
+          <a
+            href="https://www.instagram.com/zhansaya_nurtaza?igsh=NXo3ZjUxbzhkb2Nv"
+          >
+            <i class="fa fa-instagram ml-[15px]" style="font-size: 36px"></i>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=87077302603">
+            <i class="fa fa-telegram ml-[15px]" style="font-size: 36px"></i>
+          </a>
+          <i class="fa fa-whatsapp ml-[15px]" style="font-size: 36px"></i>
+        </div>
       </div>
     </div>
     <hr class="my-[20px] w-[100%]" />
@@ -101,27 +116,28 @@
             <label
               for="login_email"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Почта</label
+              >Электронды почта</label
             >
             <input
               type="text"
               id="login_email"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               v-model="loginEmail"
+              placeholder="Электронды почтаңызды еңгізіңіз"
             />
           </div>
           <div class="mb-6">
             <label
               for="login_password"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Password</label
+              >Құпия сөз</label
             >
             <input
               v-model="loginPassword"
               type="password"
               id="login_password"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="•••••••••"
+              placeholder="Құпия сөзді еңгізіңіз"
             />
           </div>
           <div class="flex justify-end">
@@ -155,27 +171,28 @@
             <label
               for="register_email"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Почта</label
-            >
+              >Электронды почта
+            </label>
             <input
               type="text"
               id="register_email"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               v-model="registerEmail"
+              placeholder="Электронды почтаңызды еңгізіңіз"
             />
           </div>
           <div class="mb-6">
             <label
               for="register_password"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Password</label
+              >Құпия сөз</label
             >
             <input
               v-model="registerPassword"
               type="password"
               id="register_password"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="•••••••••"
+              placeholder="Құпия сөзді еңгізіңіз"
             />
           </div>
           <div class="flex justify-end">
@@ -216,8 +233,9 @@ export default {
       items: [
         { title: "Басты бет", router: "/" },
         { title: "Каталог", router: "catalogs" },
-        { title: "Компания туралы", router: "about" },
-        { title: "Контакты", router: "contacts" },
+        { title: "Біз туралы", router: "about" },
+        { title: "Жаналыктар", router: "news" },
+        { title: "Контактілер", router: "contacts" },
       ],
       isMenuOpen: false,
       isLoginModalVisible: false,
@@ -231,7 +249,7 @@ export default {
       try {
         await createUserWithEmailAndPassword(
           auth,
-          this.registerEmail + "@mgial.com",
+          this.registerEmail + "@gmail.com",
           this.registerPassword
         );
         const currentUser = auth.currentUser;
@@ -250,7 +268,7 @@ export default {
       try {
         await signInWithEmailAndPassword(
           auth,
-          this.loginEmail + "@mgial.com",
+          this.loginEmail + "@gmail.com",
           this.loginPassword
         );
         this.isLoginModalVisible = false;
@@ -273,7 +291,7 @@ export default {
     },
     register() {
       // Handle registration logic here
-      alert("Registration form submitted!");
+      alert("Сәтті тіркелді");
     },
   },
   async created() {

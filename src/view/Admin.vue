@@ -1,24 +1,19 @@
 <template>
   <div class="container px-[20px]">
-    <router-link to="/addItem">
-      <button
-        type="button"
-        class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-      >
-        Қосу
-      </button>
-    </router-link>
-    <router-link to="/order">
-      <button
-        type="button"
-        class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900 ml-[10px]"
-      >
-        Тапсырыстар
-      </button>
-    </router-link>
+    <div class="flex gap-[10px] mb-[30px]">
+      <router-link to="/addItem">
+        <img src="../assets/addIcon.png" width="50px" alt="" />
+      </router-link>
+      <router-link to="/order">
+        <img src="../assets/order.png" width="50px" alt="" />
+      </router-link>
+      <router-link to="/AddNews">
+        <img src="../assets/news.png" width="50px" alt="" />
+      </router-link>
+    </div>
     <div class="flex flex-wrap gap-[20px] justify-between">
       <div v-for="i in items">
-        <Card class="w-[150px] h-" :cardData="i"></Card>
+        <Card class="w-[200px] h-" :cardData="i"></Card>
         <button
           @click="deleteItem(i.title)"
           type="button"

@@ -11,7 +11,9 @@ import AddItem from './view/AddItem.vue'
 import Order from './view/Order.vue'
 import About from './view/About.vue'
 import Contacts from './view/Contacts.vue'
-
+import AddNews from './view/AddNews.vue'
+import News from './view/News.vue'
+import NewsPage from './components/NewsPage.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
@@ -48,6 +50,21 @@ const router = createRouter({
             path: '/addItem',
             name: '/addItem',
             component: AddItem,
+        },
+        {
+            path: '/AddNews',
+            name: '/AddNews',
+            component: AddNews,
+        },
+        {
+            path: '/news',
+            name: '/news',
+            component: News,
+        },
+        {
+            path: '/news/:id',
+            name: '/news/:id',
+            component: NewsPage,
         },
         {
             path: '/order',
