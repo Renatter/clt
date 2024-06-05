@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    ы
     <div class="flex justify-between pt-[30px] items-center">
       <div class="burger-icon" @click="toggleMenu">
         <svg
@@ -77,9 +78,7 @@
           </div>
         </div>
         <div v-if="isChek">
-          <a
-            href="https://www.instagram.com/zhansaya_nurtaza?igsh=NXo3ZjUxbzhkb2Nv"
-          >
+          <a href="https://www.instagram.com/zhaanso">
             <i class="fa fa-instagram ml-[15px]" style="font-size: 36px"></i>
           </a>
 
@@ -104,9 +103,7 @@
         </router-link>
       </p>
       <div v-if="!isChek" class="flex w-[100px]">
-        <a
-          href="https://www.instagram.com/zhansaya_nurtaza?igsh=NXo3ZjUxbzhkb2Nv"
-        >
+        <a href="https://www.instagram.com/zhaanso">
           <i class="fa fa-instagram ml-[15px]" style="font-size: 36px"></i>
         </a>
 
