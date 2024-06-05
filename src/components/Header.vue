@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    ы
     <div class="flex justify-between pt-[30px] items-center">
       <div class="burger-icon" @click="toggleMenu">
         <svg
