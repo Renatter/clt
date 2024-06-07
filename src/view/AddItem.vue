@@ -1,12 +1,12 @@
 <template>
   <div class="container px-[10px]">
-    <h1 class="text-[purple] text-[20px] font-bold">Товар қосу</h1>
+    <h1 class="text-[purple] text-[20px] font-bold">{{ $t('message.addT.title') }}</h1>
     <div>
       <label
         for="first_name"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       >
-        Аты
+        {{ $t('message.addT.name') }}
       </label>
       <input
         type="text"
@@ -17,13 +17,13 @@
         required
       />
     </div>
-    <p class="w-[100px] mb-[10px]">Сурет</p>
+    <p class="w-[100px] mb-[10px]">{{ $t('message.addT.img') }}</p>
     <div class="flex">
       <input @change="onFileChange" id="dropzone-file" type="file" />
       <button v-if="file" class="btn ml-[25px] w-[100%]" @click="uploadImage()">
         <span
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >Сурет косу</span
+          >{{ $t('message.addT.addImg') }}</span
         >
       </button>
     </div>
@@ -32,19 +32,19 @@
         class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
         @click="showCategory('clothes')"
       >
-        Киiмдер
+      {{ $t('message.addT.clothes') }}
       </button>
       <button
         class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
         @click="showCategory('shoes')"
       >
-        Аяқ-киім
+        {{ $t('message.addT.boots') }}
       </button>
       <button
         class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
         @click="showCategory('accs')"
       >
-        Аксессуарлар
+        {{ $t('message.addT.accs') }}
       </button>
     </div>
 
@@ -88,7 +88,7 @@
         for="first_name"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       >
-        Багасы
+        {{ $t('message.addT.Price') }}
       </label>
       <input
         v-model="carts.price"
@@ -104,7 +104,7 @@
       type="button"
       class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-[30px]"
     >
-      Косу
+      {{ $t('message.addT.add') }}
     </button>
   </div>
 </template>
@@ -141,6 +141,9 @@ export default {
     };
   },
   methods: {
+     etLocale(locale) {
+      this.$i18n.locale = locale;
+    },
     showCategory(category) {
       this.category = category;
       this.selectedItem = null;

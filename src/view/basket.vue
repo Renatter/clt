@@ -1,6 +1,6 @@
 <template>
   <div v-if="order === false" class="container">
-    <h1 class="text-[30px]">Себет {{}}</h1>
+    <h1 class="text-[30px]"> {{ $t('message.basket.title') }} </h1>
     <div
       v-if="isSwiperVisible"
       v-for="i in items"
@@ -18,14 +18,14 @@
       </div>
       <div>
         <p class="text-[30px]">
-          Бағасы: <span class="text-[red]">{{ i.price }} тг</span>
+          {{ $t('message.basket.price') }}: <span class="text-[red]">{{ i.price }} тг</span>
         </p>
         <button
           @click="deleteItem(i)"
           type="button"
           class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-[100%] mt-[80px]"
         >
-          Жою
+          {{ $t('message.basket.delete') }}
         </button>
       </div>
     </div>
@@ -44,14 +44,14 @@
             Тип: <span class="text-[#4f4f4f]">{{ i.size }}</span>
           </p>
           <p class="">
-            Бағасы: <span class="text-[red]">{{ i.price }} тг</span>
+            {{ $t('message.basket.price') }}: <span class="text-[red]">{{ i.price }} тг</span>
           </p>
           <button
             @click="deleteItem(i)"
             type="button"
             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-[200px]"
           >
-            Жою
+            {{ $t('message.basket.delete') }}
           </button>
         </div>
       </div>
@@ -60,147 +60,139 @@
       class="total-price-container flex justify-between pt-[20px] text-center"
     >
       <h2 class="text-[20px] font-bold">
-        Жалпы баға: <span class="text-[red]">{{ totalPrice }} тг</span>
+        {{ $t('message.basket.allSum') }}: <span class="text-[red]">{{ totalPrice }} тг</span>
       </h2>
       <button
         @click="showModal = true"
         type="button"
         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
       >
-        Сатып алу
+        {{ $t('message.basket.buy') }}
       </button>
     </div>
   </div>
   <div v-if="showModal" class="modal">
-    <div class="modal-content">
-      <div class="flex gap-[10px]">
-        <div>
-          <label
-            for="first_name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Аты</label
-          >
-          <input
-            v-model="name"
-            type="text"
-            id="first_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Аты"
-            required
-          />
-        </div>
-        <div>
-          <label
-            for="last_name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Фамилия</label
-          >
-          <input
-            v-model="lname"
-            type="text"
-            id="last_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Фамилия"
-            required
-          />
-        </div>
-      </div>
+  <div class="modal-content">
+    <div class="flex gap-[10px]">
       <div>
         <label
-          for="last_name"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-[5px]"
-          >Кала</label
-        >
+          for="first_name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >{{ $t('message.basket.name') }}</label>
         <input
-          v-model="city"
+          v-model="name"
           type="text"
-          id="last_name"
+          id="first_name"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Кала"
           required
         />
       </div>
       <div>
         <label
           for="last_name"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-[5px]"
-          >Телефон</label
-        >
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >{{ $t('message.basket.last') }}</label>
         <input
-          v-model="phone"
+          v-model="lname"
           type="text"
           id="last_name"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Телефон"
           required
         />
-      </div>
-      <div class="flex gap-[10px] pt-[10px]">
-        <div>
-          <label
-            for="first_name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Адресс</label
-          >
-          <input
-            v-model="address"
-            type="text"
-            id="first_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Адресс"
-            required
-          />
-        </div>
-        <div>
-          <label
-            for="last_name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Подъезд</label
-          >
-          <input
-            v-model="podezd"
-            type="text"
-            id="last_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Подъезд"
-            required
-          />
-        </div>
-        <div>
-          <label
-            for="last_name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Кв</label
-          >
-          <input
-            v-model="kv"
-            type="text"
-            id="last_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Кв"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="flex pt-[15px]">
-        <button
-          @click="showModal = false"
-          type="button"
-          class="w-[100%] focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-        >
-          Болдырмау
-        </button>
-        <button
-          @click="send"
-          type="button"
-          class="w-[100%] focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-        >
-          Тапсырыс беру
-        </button>
       </div>
     </div>
+    <div>
+      <label
+        for="last_name"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-[5px]"
+        >{{ $t('message.basket.city') }}</label>
+      <input
+        v-model="city"
+        type="text"
+        id="last_name"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        required
+      />
+    </div>
+    <div>
+      <label
+        for="last_name"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-[5px]"
+        >Телефон</label>
+      <input
+        v-model="phone"
+        type="text"
+        id="last_name"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Телефон"
+        required
+      />
+    </div>
+    <div class="flex gap-[10px] pt-[10px]">
+      <div>
+        <label
+          for="first_name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Адресс</label>
+        <input
+          v-model="address"
+          type="text"
+          id="first_name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div>
+        <label
+          for="last_name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Подъезд</label>
+        <input
+          v-model="podezd"
+          type="text"
+          id="last_name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Подъезд"
+          required
+        />
+      </div>
+      <div>
+        <label
+          for="last_name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Кв</label>
+        <input
+          v-model="kv"
+          type="text"
+          id="last_name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Кв"
+          required
+        />
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <img src="../assets/qr.jpg" width="300px" alt="" srcset="">
+    </div>
+    <div class="flex pt-[15px]">
+      <button
+        @click="showModal = false"
+        type="button"
+        class="w-[100%] focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+      >
+        {{ $t('message.basket.exit') }}
+      </button>
+      <button
+        @click="send"
+        type="button"
+        class="w-[100%] focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+      >
+        {{ $t('message.basket.check') }}
+      </button>
+    </div>
   </div>
+</div>
+
   <div v-if="order" class="container pt-[300px]">
     <div class="">
       <div class="t relative">

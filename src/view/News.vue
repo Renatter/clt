@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="bg-white mt-[30px] p-[30px] rounded-[20px]">
-      <h1 class="text-[#1F2937] font-bold text-[30px]">Жаналыктар</h1>
+      <h1 class="text-[#1F2937] font-bold text-[30px]">   {{ $t('message.home.news') }}</h1>
 
       <div class="flex flex-wrap gap-[20px]">
         <router-link v-for="i in news" :to="{ path: '/news/' + i.title }">
@@ -31,6 +31,11 @@ export default {
     return {
       news: [],
     };
+  },
+   methods: {
+        setLocale(locale) {
+      this.$i18n.locale = locale;
+    },
   },
   async created() {
     const news = await getDocs(collection(db, "news"));

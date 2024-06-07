@@ -4,7 +4,7 @@
     <router-view></router-view>
     <div class="fixed bottom-[30px] right-[10px]">
       <img
-        v-if="showChat && userId && role !== 'admin'"
+        v-if=" userId && role !== 'admin'"
         src="./assets/chat.png"
         alt=""
         @click="toggleChat"
@@ -34,11 +34,11 @@
       <input
         v-model="newMessage"
         type="text"
-        placeholder="Хабарлама"
+      
         class="chat-input p-[10px] border rounded w-full mt-[10px]"
       />
       <button class="send-button" @click="sendMessage">
-        Жіберу {{ role }}
+       {{ $t('message.chat.sub') }}
       </button>
     </div>
   </div>

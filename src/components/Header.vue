@@ -17,9 +17,10 @@
           />
         </svg>
       </div>
-      <router-link to="/">
-        <div class="flex">
+      <div class="flex">
+          <router-link to="/">
           <h1 class="font-bold text-[30px]">ROSI</h1>
+        </router-link>
           <div v-if="isChek">
             <button @click="setLocale('kz')" class="ml-[15px]">
               <img
@@ -37,7 +38,6 @@
             </button>
           </div>
         </div>
-      </router-link>
       <div class="flex">
         <div v-if="role == null" class="flex">
           <button
@@ -45,14 +45,14 @@
             class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
             @click="showLoginModal"
           >
-            Кiру
+            {{ $t('message.nav.login') }}
           </button>
           <button
             type="button"
             class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
             @click="showRegisterModal"
           >
-            Тiркелу
+             {{ $t('message.nav.reg') }}
           </button>
         </div>
         <div class="flex justify-between">
@@ -73,7 +73,8 @@
               type="button"
               class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-[10px]"
             >
-              Шығу
+              {{ $t('message.nav.exit') }}
+              
             </button>
           </div>
           <div v-if="role === 'admin'">
@@ -90,7 +91,7 @@
               type="button"
               class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-[10px]"
             >
-              Шығу
+               {{ $t('message.nav.exit') }}
             </button>
           </div>
         </div>
@@ -149,34 +150,34 @@
       class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
     >
       <div class="bg-white p-8 rounded shadow-md w-[500px] mx-[10px]">
-        <h2 class="text-2xl mb-4">ROSI қош келдіңіз</h2>
+        <h2 class="text-2xl mb-4">{{ $t('message.login.title') }}</h2>
         <form @submit.prevent="login">
           <div>
             <label
               for="login_email"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Электронды почта</label
+              >{{ $t('message.login.email') }}</label
             >
             <input
               type="text"
               id="login_email"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               v-model="loginEmail"
-              placeholder="Электронды почтаңызды еңгізіңіз"
+              :placeholder="$t('message.login.email')"
             />
           </div>
           <div class="mb-6">
             <label
               for="login_password"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Құпия сөз</label
+              >{{ $t('message.login.pas') }}</label
             >
             <input
               v-model="loginPassword"
               type="password"
               id="login_password"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Құпия сөзді еңгізіңіз"
+              :placeholder="$t('message.login.pas')"
             />
           </div>
           <div class="flex justify-end">
@@ -185,13 +186,13 @@
               @click="isLoginModalVisible = false"
               class="text-gray-500 hover:text-gray-700 mr-4"
             >
-              Бас тарту
+             {{ $t('message.login.exit') }}
             </button>
             <button
               type="submit"
               class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
             >
-              Кiру
+             {{ $t('message.login.login') }}
             </button>
           </div>
         </form>
@@ -204,34 +205,34 @@
       class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
     >
       <div class="bg-white p-8 rounded shadow-md w-[500px] mx-[10px]">
-        <h2 class="text-2xl mb-4">ROSI тiркелу</h2>
+        <h2 class="text-2xl mb-4">{{ $t('message.login.title1') }}</h2>
         <form @submit.prevent="handleSignUp">
           <div>
             <label
               for="register_email"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Электронды почта
+              >{{ $t('message.login.email') }}
             </label>
             <input
               type="text"
               id="register_email"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               v-model="registerEmail"
-              placeholder="Электронды почтаңызды еңгізіңіз"
+              :placeholder="$t('message.login.email')"
             />
           </div>
           <div class="mb-6">
             <label
               for="register_password"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Құпия сөз</label
+              >{{ $t('message.login.pas') }}</label
             >
             <input
               v-model="registerPassword"
               type="password"
               id="register_password"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Құпия сөзді еңгізіңіз"
+              :placeholder="$t('message.login.pas')"
             />
           </div>
           <div class="flex justify-end">
@@ -240,13 +241,13 @@
               @click="isRegisterModalVisible = false"
               class="text-gray-500 hover:text-gray-700 mr-4"
             >
-              Бас тарту
+            {{ $t('message.login.exit') }}
             </button>
             <button
               type="submit"
               class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
             >
-              Тiркелу
+             {{ $t('message.login.reg') }}
             </button>
           </div>
         </form>
@@ -328,6 +329,7 @@ export default {
           this.loginPassword
         );
         this.isLoginModalVisible = false;
+        this.$router.push("/");
       } catch (error) {
         console.log("Ошибка при входе пользователя:", error);
       }
@@ -344,6 +346,7 @@ export default {
     logout() {
       auth.signOut();
       location.reload();
+      this.$router.push("/");
     },
     register() {
       // Handle registration logic here

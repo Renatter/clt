@@ -1,7 +1,7 @@
 <template>
   <div class="c flex">
     <div class="border-[1px] border-[blue] rounded-[10px] w-[300px] p-[15px]">
-      <h1 class="text-[20px] font-bold">Киiмдер</h1>
+      <h1 class="text-[20px] font-bold"> {{ $t('message.catalog.clothes') }}</h1>
       <div class="flex items-center mb-4" v-for="i in clothes" :key="i">
         <input
           :id="i"
@@ -16,7 +16,7 @@
           >{{ i }} ({{ getCount(i, "clothes") }})</label
         >
       </div>
-      <h1 class="text-[20px] font-bold">Аяқ-киім</h1>
+      <h1 class="text-[20px] font-bold">{{ $t('message.catalog.boots') }}</h1>
       <div class="flex items-center mb-4" v-for="i in shoes" :key="i">
         <input
           :id="i"
@@ -31,7 +31,7 @@
           >{{ i }} ({{ getCount(i, "shoes") }})</label
         >
       </div>
-      <h1 class="text-[20px] font-bold">Аксессуарлар</h1>
+      <h1 class="text-[20px] font-bold">{{ $t('message.catalog.accs') }}</h1>
       <div class="flex items-center mb-4" v-for="i in accs" :key="i">
         <input
           :id="i"
@@ -76,7 +76,7 @@
     </div>
     <div v-if="isModalVisible" class="modal" @click="cModal">
       <div class="modal-content" @click.stop>
-        <h1 class="text-[20px] font-bold">Киiмдер</h1>
+        <h1 class="text-[20px] font-bold">{{ $t('message.catalog.clothes') }}</h1>
         <div class="flex items-center mb-4" v-for="i in clothes" :key="i">
           <input
             :id="'modal-' + i"
@@ -91,7 +91,7 @@
             >{{ i }} ({{ getCount(i, "clothes") }})</label
           >
         </div>
-        <h1 class="text-[20px] font-bold">Аяқ-киім</h1>
+        <h1 class="text-[20px] font-bold">{{ $t('message.catalog.boots') }}</h1>
         <div class="flex items-center mb-4" v-for="i in shoes" :key="i">
           <input
             :id="'modal-' + i"
@@ -106,7 +106,7 @@
             >{{ i }} ({{ getCount(i, "shoes") }})</label
           >
         </div>
-        <h1 class="text-[20px] font-bold">Аксессуарлар</h1>
+        <h1 class="text-[20px] font-bold">{{ $t('message.catalog.accs') }}</h1>
         <div class="flex items-center mb-4" v-for="i in accs" :key="i">
           <input
             :id="'modal-' + i"
@@ -166,6 +166,9 @@ export default {
     };
   },
   methods: {
+    setLocale(locale) {
+      this.$i18n.locale = locale;
+    },
     openModal(cardData) {
       this.selectedCardData = cardData;
       this.modalVisible = true;

@@ -16,13 +16,13 @@
     </div>
     <div class="flex flex-wrap gap-[20px] justify-between">
       <div v-for="i in items">
-        <Card class="w-[200px] h-" :cardData="i"></Card>
+        <Card class=" c w-[180px] h-" :cardData="i"></Card>
         <button
           @click="deleteItem(i.title)"
           type="button"
           class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-[100%] mt-[10px]"
         >
-          Жоюу
+       {{ $t('message.delete') }}
         </button>
       </div>
     </div>
@@ -54,6 +54,9 @@ export default {
     };
   },
   methods: {
+   etLocale(locale) {
+      this.$i18n.locale = locale;
+    },
     async deleteItem(i) {
       const querySnapshot = await getDocs(
         query(collection(db, "items"), where("title", "==", i))
@@ -78,5 +81,10 @@ export default {
 .container {
   margin: 0 auto;
   max-width: 1200px;
+}
+@media (max-width: 570px) {
+.c{
+  width: 150px;
+}
 }
 </style>

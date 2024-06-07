@@ -44,4 +44,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 570px) {
+  h1 {
+   font-size: 15px;
+  }
+  p{
+    font-size: 15px;
+  }
+}</style>

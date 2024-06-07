@@ -12,7 +12,7 @@
           <p class="text-[gray] text-[25px]">{{ cardData.tip }}</p>
           <p class="text-[20px] text-[#F93C00]">{{ cardData.price }} ТГ</p>
           <div class="flex gap-[10px] items-center flex-wrap">
-            <p>Өлшемі</p>
+            <p>{{ $t('message.size') }}</p>
             <div v-if="Array.isArray(cardData.Size)" class="flex">
               <p
                 v-for="size in cardData.Size"
@@ -49,10 +49,10 @@
             type="button"
             class="w-[100%] mt-[30px] text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
           >
-            Сатып алу
+            {{ $t('message.buy') }}
           </button>
           <div v-else class="font-bold text-[20px] pt-[20px]">
-            Сайтқа тіркеліңіз
+             {{ $t('message.err') }}
           </div>
         </div>
       </div>

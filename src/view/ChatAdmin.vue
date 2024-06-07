@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>Хабарламалар тізімі</h2>
+    <h2>{{ $t('message.chat.title') }}</h2>
     <ul>
       <li v-for="(user, userId) in users" :key="userId" class="user-card">
         <h3 @click="showMessagesModal(userId)" style="cursor: pointer">
@@ -33,7 +33,7 @@
             type="text"
             placeholder="Введите сообщение"
           />
-          <button @click="sendAdminMessage">Жіберу</button>
+          <button @click="sendAdminMessage">{{ $t('message.chat.sub') }}</button>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@ import { dbase } from "../firebase/firebase"; // Подключите вашу F
 export default {
   data() {
     return {
-      users: {}, // Объект для хранения данных пользователей и их сообщений
+      users: {}, 
       selectedUserId: null,
       selectedUserMessages: [],
       adminMessage: "",
@@ -57,6 +57,9 @@ export default {
     this.fetchUsersAndMessages();
   },
   methods: {
+    etLocale(locale) {
+    this.$i18n.locale = locale;
+    },
     fetchUsersAndMessages() {
       const usersRef = ref(dbase); // Ссылка на корень базы данных
       onValue(usersRef, (snapshot) => {

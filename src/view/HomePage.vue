@@ -1,8 +1,8 @@
 <template>
   <div class="b h-[100vh] relative">
     <div class="x">
-      <h1 class="text-[44px] font-bold text-gray-100">Көктемгі көңіл-күй</h1>
-      <p class="text-[20px] text-center text-gray-100">-20% жаңа коллекцияға</p>
+      <h1 class="text-[44px] font-bold text-gray-100">{{ $t('message.home.h1') }}</h1>
+      <p class="text-[20px] text-center text-gray-100">{{ $t('message.home.dis') }}</p>
       <router-link to="/catalogs">
         <button
           type="button"
@@ -26,8 +26,7 @@
         class="gl absolute bottom-[20px] mx-[0px] left-[70px] flex justify-between p-[20px] w-[70%]"
       >
         <h1 class="font-bold text-gray-100">
-          Жаңадан келген <br />
-          тауарлар
+         {{ $t('message.home.new') }}
         </h1>
         <router-link to="/catalogs">
           <button
@@ -49,8 +48,7 @@
         class="gl absolute bottom-[20px] mx-[0px] left-[70px] flex justify-between p-[20px] w-[70%]"
       >
         <h1 class="font-bold text-gray-100">
-          Сатып алуға <br />
-          соңғы шанс
+        {{ $t('message.home.last') }}
         </h1>
         <router-link to="/catalogs">
           <button
@@ -65,7 +63,7 @@
   </div>
   <div v-if="isSwiperVisible" class="pb-[30px]">
     <h1 class="text-center text-[30px] font-bold py-[30px]">
-      Біздің тұтыншулардың таңдауы
+     {{ $t('message.home.take') }}
     </h1>
     <swiper
       :loop="true"
@@ -102,8 +100,7 @@
         class="gl absolute bottom-[20px] mx-[0px] left-[70px] flex justify-between p-[20px] w-[70%]"
       >
         <h1 class="font-bold text-gray-100">
-          Көйлектер <br />
-          және сарафанды киімдер
+         {{ $t('message.home.plate') }}
         </h1>
         <button
           type="button"
@@ -122,7 +119,7 @@
       <div
         class="gl absolute bottom-[20px] mx-[0px] left-[70px] flex items-center justify-between p-[20px] w-[70%]"
       >
-        <h1 class="font-bold text-gray-100">Стильді костюмдер</h1>
+        <h1 class="font-bold text-gray-100">{{ $t('message.home.style') }}</h1>
         <button
           type="button"
           class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
@@ -136,7 +133,7 @@
   <div class="bg-[#F1EDE8] h-[190px]">
     <div class="bg-[#232D51] text-white">
       <div class="container">
-        <h1 class="text-[30px] font-serif pt-[30px]">Жаналыктар</h1>
+        <h1 class="text-[30px] font-serif pt-[30px]">{{ $t('message.home.news') }}</h1>
         <div class="flex gap-[15px] flex-wrap pb-[30px]">
           <router-link
             v-for="x in news"
