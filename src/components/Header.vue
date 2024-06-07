@@ -18,7 +18,25 @@
         </svg>
       </div>
       <router-link to="/">
-        <h1 class="font-bold text-[30px]">ROSI</h1>
+        <div class="flex">
+          <h1 class="font-bold text-[30px]">ROSI</h1>
+          <div v-if="isChek">
+            <button @click="setLocale('kz')" class="ml-[15px]">
+              <img
+                src="https://avatars.mds.yandex.net/i?id=21595e288846b0b961d3c27bea79fcf3-3871383-images-thumbs&n=13"
+                alt=""
+                class="h-[35px] w-[35px] rounded-[5000px]"
+              />
+            </button>
+            <button @click="setLocale('ru')">
+              <img
+                src="https://cdn1.ozone.ru/s3/multimedia-e/6337266878.jpg"
+                alt=""
+                class="h-[30px] w-[30px] rounded-[5000px] ml-[10px]"
+              />
+            </button>
+          </div>
+        </div>
       </router-link>
       <div class="flex">
         <div v-if="role == null" class="flex">
@@ -93,15 +111,15 @@
       :class="{ show: isMenuOpen }"
     >
       <p
-        v-for="i in items"
-        :key="i.title"
+        v-for="i in localizedItems"
+        :key="i.router"
         class="text-[20px] font-500 hover:text-[orange] cursor-pointer pb-[30px]"
       >
         <router-link :to="i.router">
           {{ i.title }}
         </router-link>
       </p>
-      <div v-if="!isChek" class="flex w-[100px]">
+      <div v-if="!isChek" class="flex w-[200px] mb-[25px]">
         <a href="https://www.instagram.com/zhaanso">
           <i class="fa fa-instagram ml-[15px]" style="font-size: 36px"></i>
         </a>
@@ -109,6 +127,20 @@
         <a href="https://api.whatsapp.com/send?phone=87077302603">
           <i class="fa fa-whatsapp ml-[15px]" style="font-size: 36px"></i>
         </a>
+        <button @click="setLocale('kz')" class="ml-[15px]">
+          <img
+            src="https://avatars.mds.yandex.net/i?id=21595e288846b0b961d3c27bea79fcf3-3871383-images-thumbs&n=13"
+            alt=""
+            class="h-[35px] w-[35px] rounded-[5000px]"
+          />
+        </button>
+        <button @click="setLocale('ru')">
+          <img
+            src="https://cdn1.ozone.ru/s3/multimedia-e/6337266878.jpg"
+            alt=""
+            class="h-[30px] w-[30px] rounded-[5000px] ml-[10px]"
+          />
+        </button>
       </div>
     </div>
 
@@ -239,11 +271,11 @@ export default {
       registerPassword: "",
       isChek: true,
       items: [
-        { title: "Басты бет", router: "/" },
-        { title: "Каталог", router: "catalogs" },
-        { title: "Біз туралы", router: "about" },
-        { title: "Жаналыктар", router: "news" },
-        { title: "Контактілер", router: "contacts" },
+        { key: "home", router: "/" },
+        { key: "catalog", router: "catalogs" },
+        { key: "about", router: "about" },
+        { key: "news", router: "news" },
+        { key: "contacts", router: "contacts" },
       ],
       isMenuOpen: false,
       isLoginModalVisible: false,
@@ -252,8 +284,20 @@ export default {
       role: null,
     };
   },
-
+  computed: {
+    localizedItems() {
+      return this.items.map((item) => {
+        return {
+          ...item,
+          title: this.$t(`message.nav.${item.key}`),
+        };
+      });
+    },
+  },
   methods: {
+    setLocale(locale) {
+      this.$i18n.locale = locale;
+    },
     checkScreenSize() {
       this.isChek = window.innerWidth >= 570;
     },

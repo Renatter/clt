@@ -13,6 +13,7 @@ import About from './view/About.vue'
 import Contacts from './view/Contacts.vue'
 import AddNews from './view/AddNews.vue'
 import News from './view/News.vue'
+import chatAdmin from './view/ChatAdmin.vue'
 import NewsPage from './components/NewsPage.vue'
 const router = createRouter({
     history: createWebHistory(),
@@ -70,6 +71,11 @@ const router = createRouter({
             path: '/order',
             name: '/order',
             component: Order,
+        },
+        {
+            path: '/chatAdmin',
+            name: '/chatAdmin',
+            component: chatAdmin,
         },
     ]
 })

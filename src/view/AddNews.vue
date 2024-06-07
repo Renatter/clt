@@ -105,6 +105,8 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .centered-content {

@@ -10,6 +10,9 @@
       <router-link to="/AddNews">
         <img src="../assets/news.png" width="50px" alt="" />
       </router-link>
+      <router-link to="/chatAdmin">
+        <img src="../assets/chat.png" width="50px" alt="" />
+      </router-link>
     </div>
     <div class="flex flex-wrap gap-[20px] justify-between">
       <div v-for="i in items">
@@ -72,8 +75,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.conainer {
-  max-width: 1200px;
+.container {
   margin: 0 auto;
+  max-width: 1200px;
 }
 </style>

@@ -74,7 +74,7 @@
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
-      <swiper-slide v-for="i in items">
+      <swiper-slide v-for="i in items.slice(0, 7)">
         <Card class="w-[200px]" :cardData="i" @card-clicked="openModal"></Card>
       </swiper-slide>
     </swiper>
@@ -84,9 +84,11 @@
       class="w-[250px]"
       :cardData="i"
       @card-clicked="openModal"
-      v-for="i in items"
+      v-for="i in items.slice(0, 7)"
+      :key="i.id"
     ></Card>
   </div>
+
   <div
     class="container pt-[130px] pb-[30px] flex justify-between flex-wrap gap-[20px]"
   >
