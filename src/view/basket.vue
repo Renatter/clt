@@ -172,7 +172,7 @@
       </div>
     </div>
     <div class="flex justify-center">
-      <img src="../assets/qr.jpg" width="300px" alt="" srcset="">
+      <img src="../assets/qr1.jpg" width="300px" alt="" srcset="">
     </div>
     <div class="flex pt-[15px]">
       <button
